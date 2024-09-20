@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  timestamp: 
+  date: 2024-09-20
+  base_symbol: MyString
+  target_symbol: MyString
+  rate: 9.99
+
+two:
+  timestamp: 
+  date: 2024-09-20
+  base_symbol: MyString
+  target_symbol: MyString
+  rate: 9.99
