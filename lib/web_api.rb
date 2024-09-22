@@ -17,7 +17,7 @@ module WebApi
     puts "Importing data for #{date} from FixerIO API..."
 
     # base= EUR only - Free Subscription Plan Limitation
-    response = RestClient.get("http://data.fixer.io/api/#{date}?access_key=###YOUR_ACCESS_KEY_HERE###}")
+    response = RestClient.get("http://data.fixer.io/api/#{date}?access_key=99a72aa39e46b9d2516b89506a6402ef")
     erates = JSON.parse(response.body)
 
     historical = !(date == "latest" || date == Date.today)
@@ -37,7 +37,7 @@ module WebApi
       return
     end
 
-    response2 = RestClient.get("http://data.fixer.io/api/symbols?access_key==###YOUR_ACCESS_KEY_HERE###")
+    response2 = RestClient.get("http://data.fixer.io/api/symbols?access_key=99a72aa39e46b9d2516b89506a6402ef")
     symbols = JSON.parse(response2.body)
 
     symbols["symbols"].each do |k, v|
