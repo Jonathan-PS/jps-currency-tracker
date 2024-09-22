@@ -1,4 +1,5 @@
-class RatesCalculator
+module RatesCalculator
+  include WebApi
   require "date"
 
   # rails console examples:
