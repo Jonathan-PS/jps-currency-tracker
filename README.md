@@ -25,6 +25,11 @@ rails db:create
 rails db:migrate
 ```
 
+### FixerIO API KEY
+- Required!
+- Must give a valid FixerIO Api key to the WebApi methods.
+- You can get your key for free on [Fixer Website](https://fixer.io/)
+
 ### Run
 
 ```console
@@ -77,5 +82,5 @@ end
 
 ### Task 4 - Web Interface
 
-Partial completion - Currency Conversion form now takes input and calculates, but results are only printed to the terminal
+Partial completion - Currency Conversion form now takes input and calculates, but results are only printed to the terminal.
 
