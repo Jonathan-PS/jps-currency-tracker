@@ -17,7 +17,8 @@ module WebApi
     puts "Importing data for #{date} from FixerIO API..."
 
     # base= EUR only - Free Subscription Plan Limitation
-    response = RestClient.get("http://data.fixer.io/api/#{date}?access_key=99a72aa39e46b9d2516b89506a6402ef")
+    response = RestClient.get("http://data.fixer.io/api/#{date}?access_key=xx
+")
     erates = JSON.parse(response.body)
 
     historical = !(date == "latest" || date == Date.today)
@@ -37,11 +38,13 @@ module WebApi
       return
     end
 
-    response2 = RestClient.get("http://data.fixer.io/api/symbols?access_key=99a72aa39e46b9d2516b89506a6402ef")
-    symbols = JSON.parse(response2.body)
+    response2 = RestClient.get("http://data.fixer.io/api/symbols?access_key=xx
+")
+    symbolsAndNames = JSON.parse(response2.body) 
+    
+    sortedByNamesArray  = symbolsAndNames['symbols'].to_a.sort_by{|n| n[1] }
 
-    symbols["symbols"].each do |k, v|
-      Currency.createCurrency(v, k)
-    end
+    sortedByNamesArray.each { |s| Currency.createCurrency(s[1], s[0]) }
+    
   end
 end

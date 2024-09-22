@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   resources :currencies, only: [ :show, :index ]
   resources :exchange_rates, only: [ :show, :index ]
-  resources :search, only: [ :index, :edit, :create ]
+  resources :search, only: [ :create]
+  resources :search
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   root "pages#home"

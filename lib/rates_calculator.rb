@@ -8,10 +8,14 @@ module RatesCalculator
 
   def self.convert(amount, base, target, date)
     # do checks before conversion
-    if (amount.class == Integer || amount.class == Float) && date.class == Date  && Currency.bothValid(base, target)
+    if (amount.is_a? Numeric) && (date.is_a? Date) && Currency.bothValid(base, target)
       convertCurrencies(amount, base, target, date)
     else
-      puts "Wrong input arguments!"
+      puts "ExchangeRate.convert - Wrong input arguments!"
+      puts "convert(#{amount}, #{base}, #{target}, #{date})"
+      puts amount.is_a? Numeric
+      puts date.is_a? == Date
+      puts Currency.bothValid(base, target)
     end
   end
 
@@ -45,8 +49,8 @@ module RatesCalculator
 
   def self.prettyPrint(date, amount, base, bRate, converted, target, tRate)
     puts "RESULTS FOR #{date}
-    #{amount} #{Currency.getName(base)}
-    = #{converted} #{Currency.getName(target)}
+    #{amount} #{Currency.getNameByAcronym(base)}
+    = #{converted} #{Currency.getNameByAcronym(target)}
 
     1 #{base} = #{(tRate).round(2)} #{target}
     1 #{target} = #{(1.0/bRate).round(2)} #{base}"
