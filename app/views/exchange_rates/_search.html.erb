@@ -40,3 +40,9 @@
     <%= form.submit %>
   </div>
 <% end %>
+
+<%= form_tag search_path, method: :get do %>
+  <%= text_field_tag :project_name, params[:project_name] %>
+  <%= text_field_tag :client, params[:client] %>
+  <%= submit_tag "Search", name: nil %>
+<% end %>

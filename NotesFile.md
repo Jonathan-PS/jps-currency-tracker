@@ -1,7 +1,10 @@
+# DB stuff
+
 ### Latest API call
+access_key = xxx
 
 http://data.fixer.io/api/latest
-    ? access_key = 99a72aa39e46b9d2516b89506a6402ef 
+    ? access_key = x 
 
 #### Response
 
@@ -25,7 +28,7 @@ http://data.fixer.io/api/latest
 ### Historical API call
 
 http://data.fixer.io/api/2013-12-24
-    ? access_key = 99a72aa39e46b9d2516b89506a6402ef
+    ? access_key = x
     & base = GBP
     & symbols = USD,CAD,EUR
 
@@ -46,7 +49,7 @@ http://data.fixer.io/api/2013-12-24
 ### Supported Symbols Endpoint
 
 http://data.fixer.io/api/symbols
-    ? access_key = 99a72aa39e46b9d2516b89506a6402ef
+    ? access_key = x
 
 {
   "success": true,
@@ -63,12 +66,18 @@ http://data.fixer.io/api/symbols
 
 - The Fixer API comes with a constantly updated endpoint returning all available currencies. To access this list, make a request to the API's symbols endpoint.
 
+
+
 ### Table Symbols 
 - column id: Long auto generated
 - column symbol: String
 - column name: String
 - created_date
 - updated_date
+
+```console
+rails generate scaffold Currencies name:string acronym:string
+```
 
 ### Table ExchangeRates
 - column id - Long auto generated
@@ -80,12 +89,12 @@ http://data.fixer.io/api/symbols
 - created_date
 - updated_date
 
-
+```console
 rails generate scaffold ExchangeRates timestamp:bigint date:date base_symbol:string target_symbol:string rate:decimal
+```
 
 
-
-response = RestClient.get('http://data.fixer.io/api/latest?access_key = 99a72aa39e46b9d2516b89506a6402ef')
+response = RestClient.get('http://data.fixer.io/api/latest?access_key = xxx')
 exchange_rates = JSON.parse(response.body)
 
 
@@ -96,11 +105,30 @@ exchange_rates = JSON.parse(response.body)
 
 ```ruby
 ### get latest data (base=EUR by default)
-response = RestClient.get('http://data.fixer.io/api/latest?access_key=99a72aa39e46b9d2516b89506a6402ef')
+response = RestClient.get('http://data.fixer.io/api/latest?access_key=xxxx')
 erates = JSON.parse(response.body)
 
 ## Each create in its own transaction
 erates["rates"].each do |key, value| 
   ExchangeRate.create(timestamp: erates["timestamp"], date: erates["date"],  historical: false, base_symbol: erates["base"], target_symbol: key, rate: value) 
 end
+
+
+### get symbols
+response2 = RestClient.get('http://data.fixer.io/api/symbols?access_key=xxx')
+symbols = JSON.parse(response2.body)
+
+symbols["symbols"].each do |k, v|
+  p Currency.create(name: v, acronym: k)
+end
 ```
+
+
+
+
+
+# Cron Jobs
+
+Wheneverize
+
+

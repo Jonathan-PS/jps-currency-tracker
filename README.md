@@ -1,6 +1,6 @@
 # README
 
-This is the currency tracker app answering to an technical interview demonstration.
+This is the currency tracker app answering a technical interview demonstration.
 
 By Jonathan Stang
 
@@ -15,8 +15,6 @@ By Jonathan Stang
 Local run requires a `localhost:5432` Postgresql database with 
   - **username:** `postgres`
   - **password:** `postgres`
-
-* Database initialization
 
 ### Configuration
   - For local setup, run the following in terminal
@@ -35,4 +33,4 @@ rails s
 
 ### Deployment
 
-  - Deployed to heroku
+  - (planned) deployment to heroku

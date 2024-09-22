@@ -28,6 +28,8 @@ gem "sassc-rails"
 # Rest Client
 gem 'rest-client'
 
+# Cron Jobs
+gem 'whenever', require: false 
 
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
