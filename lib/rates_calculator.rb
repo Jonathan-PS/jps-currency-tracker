@@ -25,7 +25,7 @@ module RatesCalculator
     tRate = fetchRate("EUR", target, date)
 
     converted = (amount * tRate / bRate).round(2)
-    prettyPrint(amount, base, bRate, converted, target, tRate)
+    prettyPrint(date, amount, base, bRate, converted, target, tRate)
     converted
   end
 
@@ -43,8 +43,8 @@ module RatesCalculator
     end
   end
 
-  def self.prettyPrint(amount, base, bRate, converted, target, tRate)
-    puts "RESULTS
+  def self.prettyPrint(date, amount, base, bRate, converted, target, tRate)
+    puts "RESULTS FOR #{date}
     #{amount} #{Currency.getName(base)}
     = #{converted} #{Currency.getName(target)}
 

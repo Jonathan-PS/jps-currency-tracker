@@ -52,10 +52,21 @@ Given EUR-BASE and EUR-TARGET, the currency conversion is basically:
 ...
 ```
 
+```ruby
+# > rails console example
+> RatesCalculator.convert(100, "USD", "NOK", Date.new(2024,9,15))
+
+RESULTS FOR 2024-09-15
+    100 United States Dollar
+    = 1062.17 Norwegian Krone
+
+    1 USD = 11.78 NOK
+    1 NOK = 0.9 USD
+```
 
 ### Task 3 - daily exchange rate DB storage
 See: 
-- `config/schedule.rb``
+- `config/schedule.rb`
 
 Used the wheneverize gem
 ```ruby
