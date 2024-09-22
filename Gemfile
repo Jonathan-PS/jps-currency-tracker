@@ -26,10 +26,10 @@ gem "bootstrap"
 gem "sassc-rails"
 
 # Rest Client
-gem 'rest-client'
+gem "rest-client"
 
 # Cron Jobs
-gem 'whenever', require: false 
+gem "whenever", require: false
 
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
@@ -63,7 +63,7 @@ group :development do
   gem "web-console"
 
   # Highlight the fine-grained location where an error occurred [https://github.com/ruby/error_highlight]
-  gem "error_highlight", ">= 0.4.0", platforms: [:ruby]
+  gem "error_highlight", ">= 0.4.0", platforms: [ :ruby ]
 end
 
 group :test do

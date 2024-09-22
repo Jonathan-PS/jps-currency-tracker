@@ -34,3 +34,36 @@ rails s
 ### Deployment
 
   - (planned) deployment to heroku
+
+## Tasks
+
+### Task 1 & Task 2 - Currency conversion
+See:
+- `lib/web_api.rb`
+- `lib/rates_calculator.rb`
+- `db/schema.rb`
+
+Given EUR-BASE and EUR-TARGET, the currency conversion is basically:
+
+```ruby
+# lib/rates_calculator.rb
+...
+    converted = (amount * tRate / bRate).round(2)
+...
+```
+
+
+### Task 3 - daily exchange rate DB storage
+See: 
+- `config/schedule.rb``
+
+Used the wheneverize gem
+```ruby
+every 1.day, at: "4:30 am" do
+  runner "WebApi.dailyImportFromFixerIO"
+end
+```
+
+### Task 4 - Web Interface
+TODO
+

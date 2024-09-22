@@ -7,8 +7,8 @@ module WebApi
 
   # - TODO:
   #   - Security:
-  #     - Remove access_key from source code! 
-  def self.importFromFixer date
+  #     - Remove access_key from source code!
+  def self.importFromFixer(date)
     if ExchangeRate.importedAlready(date)
       puts "Currency rates already imported for #{date}. Skipping."
       return
@@ -17,13 +17,13 @@ module WebApi
     puts "Importing data for #{date} from FixerIO API..."
 
     # base= EUR only - Free Subscription Plan Limitation
-    response = RestClient.get("http://data.fixer.io/api/#{date}?access_key=")
+    response = RestClient.get("http://data.fixer.io/api/#{date}?access_key=###YOUR_ACCESS_KEY_HERE###}")
     erates = JSON.parse(response.body)
-    
+
     historical = !(date == "latest" || date == Date.today)
 
     #  Save to DB
-    erates["rates"].each do |key, value| 
+    erates["rates"].each do |key, value|
       ExchangeRate.createExchangeRates(erates["timestamp"], erates["date"], historical, erates["base"], key, value)
     end
 
@@ -37,12 +37,11 @@ module WebApi
       return
     end
 
-    response2 = RestClient.get('http://data.fixer.io/api/symbols?access_key=')
+    response2 = RestClient.get("http://data.fixer.io/api/symbols?access_key==###YOUR_ACCESS_KEY_HERE###")
     symbols = JSON.parse(response2.body)
 
     symbols["symbols"].each do |k, v|
       Currency.createCurrency(v, k)
     end
   end
-  
 end

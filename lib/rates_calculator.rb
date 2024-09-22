@@ -10,7 +10,7 @@ module RatesCalculator
     # do checks before conversion
     if (amount.class == Integer || amount.class == Float) && date.class == Date  && Currency.bothValid(base, target)
       convertCurrencies(amount, base, target, date)
-    else 
+    else
       puts "Wrong input arguments!"
     end
   end
@@ -20,13 +20,13 @@ module RatesCalculator
   def self.convertCurrencies(amount, base, target, date)
     puts "Date:      #{date}"
     puts "Converting: #{amount} #{base} to #{target}."
-    
+
     bRate = fetchRate("EUR", base, date)
     tRate = fetchRate("EUR", target, date)
 
     converted = (amount * tRate / bRate).round(2)
     prettyPrint(amount, base, bRate, converted, target, tRate)
-    return converted
+    converted
   end
 
   def self.fetchRate(base, target, date)

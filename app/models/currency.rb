@@ -1,5 +1,4 @@
 class Currency < ApplicationRecord
-
   def acronym_with_name
     "#{acronym} - #{name}"
   end
