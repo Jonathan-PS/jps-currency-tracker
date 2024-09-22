@@ -40,11 +40,10 @@ module WebApi
 
     response2 = RestClient.get("http://data.fixer.io/api/symbols?access_key=xx
 ")
-    symbolsAndNames = JSON.parse(response2.body) 
-    
-    sortedByNamesArray  = symbolsAndNames['symbols'].to_a.sort_by{|n| n[1] }
+    symbolsAndNames = JSON.parse(response2.body)
+
+    sortedByNamesArray  = symbolsAndNames["symbols"].to_a.sort_by { |n| n[1] }
 
     sortedByNamesArray.each { |s| Currency.createCurrency(s[1], s[0]) }
-    
   end
 end

@@ -2,8 +2,8 @@ class Currency < ApplicationRecord
   def acronym_with_name
     "#{acronym} - #{name}"
   end
-  
-  def self.defaultBaseId  
+
+  def self.defaultBaseId
     Currency.where(acronym: "USD").last.id
   end
 

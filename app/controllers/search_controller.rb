@@ -1,6 +1,6 @@
 class SearchController < ApplicationController
   include RatesCalculator
-  
+
   def create
     25.times { print ". " }
     puts
@@ -24,7 +24,7 @@ class SearchController < ApplicationController
 
       RatesCalculator.convert(amount, base, target, date)
     rescue => error
-      p error.message 
+      p error.message
     end
   end
 end
