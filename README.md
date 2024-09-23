@@ -72,7 +72,7 @@ RESULTS FOR 2024-09-15
 ### Task 3 - daily exchange rate DB storage
 See: 
 - `config/schedule.rb`
-
+ 
 Used the wheneverize gem
 ```ruby
 every 1.day, at: "4:30 am" do
