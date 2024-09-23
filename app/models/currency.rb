@@ -6,11 +6,11 @@ class Currency < ApplicationRecord
   # ----- DB Methods ----- #
 
   def self.defaultBaseId
-    Currency.where(acronym: "USD").last.id
+    Currency.where(acronym: "NOK").last.id
   end
 
   def self.defaultTargetId
-    Currency.where(acronym: "NOK").last.id
+    Currency.where(acronym: "USD").last.id
   end
 
   def self.bothValid(code1, code2)

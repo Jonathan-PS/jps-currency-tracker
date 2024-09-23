@@ -82,4 +82,6 @@ end
 
 ### Task 4 - Web Interface
 
-Done for Currency converter form.
+Currency converter form:
+
+- `app/views/pages/_currency_calculator.html.erb`

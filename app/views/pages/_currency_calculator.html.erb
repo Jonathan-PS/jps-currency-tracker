@@ -1,32 +1,29 @@
 <div class="container">
   <%= form_with url: "/pages" do |form| %>
-    <div class="row row-cols-3">
-      <div class="col">
+    <div class="row">
+      <div class="col-sm-4">
         <label for="amountInput" class="form-label">Amount</label>
         <%= form.number_field :amount, :value => 100, id: "amountInput", class: "form-control" %>
       </div>
-      <div class="col">
-        <label for="baseSelect" class="form-label">From</label>
+      <div class="col-sm-4">
+        <label for="baseSelect" class="form-label">From</label><br>
         <%= collection_select(:base, :id ,Currency.all, :id, :acronym_with_name, selected: @defaultBaseId, prompt: true, id: "baseSelect", class: "form-select") %>
       </div>
-      <div class="col">    
-        <label for="targetSelect" class="form-label">To</label>
+      <div class="col-sm-4">
+        <label for="targetSelect" class="form-label">To</label><br>
         <%= collection_select(:target, :id, Currency.all, :id, :acronym_with_name, selected: @defaultTargetId, prompt: true, id: "targetSelect", class: "form-select", type: "date") %>
       </div>
-      <div class="col">    
-        <label for="selectedDate">Date</label>
-        <%= form.date_field("date", value: Date.today, max: Date.today, id: "selectedDate") %> 
+    </div>
+    <div class="row">
+      <div class="col-sm-4">
+        <label for="selectedDate" class="form-label">Date</label><br>
+        <%= form.date_field("date", value: Date.today, max: Date.today, id: "selectedDate", class: "form-control") %> 
       </div>
-      <div class="col">
-      </div>
-      <div class="col">
-        <label for="convert" class="form-label"></label>
+      <div class="col-sm-4">
+        <label for="convert" class="form-label"></label><br>
         <%= form.submit("Convert", id: "convert", class: "form-control btn btn-dark")%>
       </div>
-      <div class="col">
-      </div>
-
-      <div class="col">
+      <div class="col-sm-4">
         <% if !flash.empty? %> 
           <span><%= flash[:amount] %> <%= flash[:base] %> =</span>
           <h4><%= flash[:converted] %> <%= flash[:target] %></h4>
@@ -36,8 +33,6 @@
             <i>1 <%= flash[:target] %> = <%= flash[:tRate] %> <%= flash[:target] %></i>
           </p>
         <% end %>
-      </div>
-      <div class="col">
       </div>
     <% end %>
 </div>
