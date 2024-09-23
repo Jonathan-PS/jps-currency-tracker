@@ -82,5 +82,4 @@ end
 
 ### Task 4 - Web Interface
 
-Partial completion - Currency Conversion form now takes input and calculates, but results are only printed to the terminal.
-
+Done for Currency converter form.
