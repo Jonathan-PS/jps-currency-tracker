@@ -29,8 +29,8 @@ module RatesCalculator
     tRate = fetchRate("EUR", target, date)
 
     converted = (amount * tRate / bRate).round(2)
-    prettyPrint(date, amount, base, bRate, converted, target, tRate)
-    converted
+
+    { date: date, amount: amount, base: base, bRate: bRate, converted: converted, target: target, tRate: tRate }
   end
 
   def self.fetchRate(base, target, date)
@@ -47,8 +47,15 @@ module RatesCalculator
     end
   end
 
-  def self.prettyPrint(date, amount, base, bRate, converted, target, tRate)
-    puts "RESULTS FOR #{date}
+  def self.prettyPrint(hash)
+    date = hash[:date]
+    amount = hash[:amount]
+    base = hash[:base]
+    bRate = hash[:bRate]
+    converted = hash[:converted]
+    target = hash[:target]
+    tRate = hash[:tRate]
+    "RESULTS FOR #{date}
     #{amount} #{Currency.getNameByAcronym(base)}
     = #{converted} #{Currency.getNameByAcronym(target)}
 

@@ -1,5 +1,5 @@
 <div class="container">
-  <%= form_with url: "/search" do |form| %>
+  <%= form_with url: "/pages" do |form| %>
     <div class="row row-cols-3">
       <div class="col">
         <label for="amountInput" class="form-label">Amount</label>
@@ -22,6 +22,22 @@
       <div class="col">
         <label for="convert" class="form-label"></label>
         <%= form.submit("Convert", id: "convert", class: "form-control btn btn-dark")%>
+      </div>
+      <div class="col">
+      </div>
+
+      <div class="col">
+        <% if !flash.empty? %> 
+          <span><%= flash[:amount] %> <%= flash[:base] %> =</span>
+          <h4><%= flash[:converted] %> <%= flash[:target] %></h4>
+          <p>
+            <i>1 <%= flash[:base] %> = <%= flash[:bRate] %> <%= flash[:base] %></i>
+            <br>
+            <i>1 <%= flash[:target] %> = <%= flash[:tRate] %> <%= flash[:target] %></i>
+          </p>
+        <% end %>
+      </div>
+      <div class="col">
       </div>
     <% end %>
 </div>

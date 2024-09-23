@@ -7,7 +7,7 @@ http://data.fixer.io/api/latest
     ? access_key = x 
 
 #### Response
-
+```
 {
     "success": true,
     "timestamp": 1519296206,
@@ -24,15 +24,19 @@ http://data.fixer.io/api/latest
     [...]
     }
 }
+```
 
 ### Historical API call
-
+```
 http://data.fixer.io/api/2013-12-24
     ? access_key = x
     & base = GBP
     & symbols = USD,CAD,EUR
+```
 
 #### Response
+
+```
 {
     "success": true,
     "historical": true,
@@ -45,6 +49,7 @@ http://data.fixer.io/api/2013-12-24
         "CAD": 1.739516
     }
 }
+```
 
 ### Supported Symbols Endpoint
 
@@ -132,77 +137,3 @@ end
 Wheneverize
 
 
-
-<!-- TESTING STUFF OUT 
-
-
-<%= form_with do |form| %>
-  <%= form.number_field :price, :value => 1 %>
-  
-  <%= collection_select(:id, :acronym, Currency.all, :id, :acronym_with_name, selected: 2, prompt: true, id: "base", class: "form-select") %>
-  <%= collection_select(:id, :acronym, Currency.all, :id, :acronym_with_name, prompt: true, id: "target", class: "form-select") %>
-  <%= form.date_field :born_on %> 
-
-  <%= form.submit "Search" %>
-
-
-<% end %>
-
-
-<%= form_with model: @exchange_rate do |er| %>
-      <%= er.date_field :date %>
-      <%= er.number_field :amount %>
-      <%= collection_select(:id, :acronym, Currency.all, :id, :acronym_with_name, prompt: true, id: "base", class: "form-select") %>
-      <%= collection_select(:id, :acronym, Currency.all, :id, :acronym_with_name, prompt: true, id: "target", class: "form-select") %>
-<% end %>
-
-<%= form_with url: "/search", method: :get do |form| %>
-  <%= form.number_field :price, :value => 1 %>
-  
-  <%= collection_select(:id, :acronym, Currency.all, :id, :acronym_with_name, prompt: true, id: "base", class: "form-select") %>
-  <%= collection_select(:id, :acronym, Currency.all, :id, :acronym_with_name, prompt: true, id: "target", class: "form-select") %>
-  <%= form.date_field :born_on %> 
-
-  <%= form.submit "Search" %>
-
-
-<% end %>
-
-<div class="container">
-  <div class="row row-cols-3">
-    <div class="col">
-      <label for="amount" class="form-label">Amount</label>
-      <input type="amount" class="form-control" id="inputAmount" placeholder="1">
-    </div>
-    <div class="col">
-      <label for="inputBaseCurrency" class="form-label">From</label>
-      <select id="inputBaseCurrency" class="form-select">
-        <option selected>EUR - Euro</option>
-        <option>USD - United States Dollar</option>
-        <option>GBP - Great Britain Pound</option>
-        <option>NOK - Norwegian Krone</option>
-      </select>
-    </div>
-    <div class="col">
-      <label for="inputTargetCurrency" class="form-label">To</label>
-      <select id="inputBaseCurrency" class="form-select">
-        <option>EUR - Euro</option>
-        <option>USD - United States Dollar</option>
-        <option>GBP - Great Britain Pound</option>
-        <option selected>NOK - Norwegian Krone</option>
-      </select>
-    </div>
-    <div class="col">
-      <label for="startDate">Date</label>
-      <input id="startDate" class="form-control" type="date" />
-    </div>
-    <div class="col">
-    </div>
-    <div class="col">
-      <label for="convert" class="form-label"></label>
-      <button id="convert" type="button" class="form-control btn btn-dark">Convert</button>
-    </div>
-  </div>
-</div>
-
--->

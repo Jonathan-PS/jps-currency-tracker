@@ -3,6 +3,8 @@ class Currency < ApplicationRecord
     "#{acronym} - #{name}"
   end
 
+  # ----- DB Methods ----- #
+
   def self.defaultBaseId
     Currency.where(acronym: "USD").last.id
   end
