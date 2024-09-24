@@ -1,10 +1,16 @@
 class PagesController < ApplicationController
   include RatesCalculator
 
+# Populating database table Currencies, will only run once!
+WebApi.importCurrencies
+
+
   def home
     @defaultBaseId = Currency.defaultBaseId
     @defaultTargetId = Currency.defaultTargetId
   end
+
+
 
   def create
     25.times { print ". " }
