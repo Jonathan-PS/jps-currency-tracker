@@ -136,4 +136,21 @@ end
 
 Wheneverize
 
+  create_table "currencies", force: :cascade do |t|
+    t.bigint "id", PK auto increment
+    t.string "name"
+    t.string "iso_code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    index on iso_code unique
+  end
 
+  create_table "exchange_rates", force: :cascade do |t|
+    t.bigint "id", PK auto increment
+    t.date "date"
+    t.string "base_currency_id", FK
+    t.string "target_currency_id", FK
+    t.decimal "rate", 6
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["date", "base_symbol", "target_symbol"], name: "idx_on_date_base_symbol_target_symbol_5d790f527f", unique: true

@@ -61,12 +61,14 @@ Given EUR-BASE and EUR-TARGET, the currency conversion is basically:
 # > rails console example
 > RatesCalculator.convert(100, "USD", "NOK", Date.new(2024,9,15))
 
-RESULTS FOR 2024-09-15
-    100 United States Dollar
-    = 1062.17 Norwegian Krone
+RESULTS FOR 2024-09-26
+    100.0 NOK =
+    9.43 USD
+  
+    1 USD = 10.600133 NOK
+    1 NOK = 0.094338 USD
 
-    1 USD = 11.78 NOK
-    1 NOK = 0.9 USD
+
 ```
 
 ### Task 3 - daily exchange rate DB storage

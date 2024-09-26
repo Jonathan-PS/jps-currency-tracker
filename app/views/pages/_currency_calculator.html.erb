@@ -28,9 +28,9 @@
           <span><%= flash[:amount] %> <%= flash[:base] %> =</span>
           <h4><%= flash[:converted] %> <%= flash[:target] %></h4>
           <p>
-            <i>1 <%= flash[:base] %> = <%= flash[:bRate] %> <%= flash[:base] %></i>
+            <i>1 <%= flash[:target] %> = <%= (flash[:bRate].to_d / flash[:tRate].to_d).round(6) %> <%= flash[:base] %></i>
             <br>
-            <i>1 <%= flash[:target] %> = <%= flash[:tRate] %> <%= flash[:target] %></i>
+            <i>1 <%= flash[:base] %> = <%= (flash[:tRate].to_d / flash[:bRate].to_d).round(6) %> <%= flash[:target] %></i>
           </p>
         <% end %>
       </div>

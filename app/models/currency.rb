@@ -3,7 +3,7 @@ class Currency < ApplicationRecord
     # Populating database table Currencies, will only run once!
     WebApi.importCurrencies
   end 
-  
+
   def acronym_with_name
     "#{acronym} - #{name}"
   end

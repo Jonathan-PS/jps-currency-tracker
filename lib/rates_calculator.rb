@@ -28,8 +28,11 @@ module RatesCalculator
     bRate = fetchRate("EUR", base, date)
     tRate = fetchRate("EUR", target, date)
 
+
     converted = (amount * tRate / bRate).round(2)
 
+    puts 25.times { print " x "}
+    puts "#{bRate} #{tRate} #{converted} #{amount}"
     { date: date, amount: amount, base: base, bRate: bRate, converted: converted, target: target, tRate: tRate }
   end
 
